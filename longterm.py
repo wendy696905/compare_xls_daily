@@ -15,10 +15,10 @@ from datetime import timedelta
 from datetime import date
 
 #change the file name as date
-src = r'//edc.micron.com/twn/FAB030/GDMS/GDMS_dashboard/longterm_action/daily_data/longterm.csv'
-dst = r'//edc.micron.com/twn/FAB030/GDMS/GDMS_dashboard/longterm_action/daily_data'
-name_list_src = r'//edc.micron.com/twn/FAB030/GDMS/OMT Area Scorecard/Name list/Name_List_for_Area_Scorecard_data.csv'
-name_list_dst = r'https://edc.micron.com/twn/FAB030/GDMS/GDMS_dashboard/SharePoint_Excel_New'
+src = r'file'
+dst = r'file_folder'
+name_list_src = r'changed_file_full_path'
+name_list_dst = r'changed_file_dst_folder'
 
 folder_time = datetime.now().strftime('%Y%m%d')
 dst1 = dst + '\longterm_action_' + folder_time + '.csv'
@@ -53,7 +53,7 @@ today = date.today() + timedelta(days = 3)
 df_diff['Extension WW'] = today.isocalendar()[1]
 '''
 #read summary table file
-summary_file = r'//edc.micron.com/twn/FAB030/GDMS/GDMS_dashboard/longterm_action/longterm_action_extend_summary.xlsx'
+summary_file = r'summary_file_path'
 df_summary = pd.read_excel(summary_file)
 df_summary.drop(columns=df_summary.columns[0], axis=1, inplace=True)
 
@@ -61,7 +61,7 @@ df_summary.drop(columns=df_summary.columns[0], axis=1, inplace=True)
 df_summary = pd.concat([df_summary, df_diff])
 df_summary['compare'] = df_summary['Description'] + df_summary['GDM No.']
 
-df_summary.to_excel(r'C:\Users\wendysu\OneDrive - Micron Technology, Inc\GDM\GDM_dashboard\longterm_action_extend_summary.xlsx',sheet_name='sheet1')
+df_summary.to_excel(r'summary_file_path',sheet_name='sheet1')
 
 
 
